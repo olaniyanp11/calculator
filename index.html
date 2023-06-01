@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="calculator">
+      <input class="screen" id="screen" placeholder="0" readonly />
+      <div class="numbers">
+        <div class="row">
+          <button onclick="appendNumber(1)">1</button>
+          <button onclick="appendNumber(2)">2</button>
+          <button onclick="appendNumber(3)">3</button>
+          <button class="operator" onclick="appendOperator('+')">+</button>
+        </div>
+        <div class="row">
+          <button onclick="appendNumber(4)">4</button>
+          <button onclick="appendNumber(5)">5</button>
+          <button onclick="appendNumber(6)">6</button>
+          <button class="operator" onclick="appendOperator('-')">-</button>
+        </div>
+        <div class="row">
+          <button onclick="appendNumber(7)">7</button>
+          <button onclick="appendNumber(8)">8</button>
+          <button onclick="appendNumber(9)">9</button>
+          <button class="operator" onclick="appendOperator('*')">x</button>
+        </div>
+        <div class="row">
+          <button onclick="appendNumber(0)">0</button>
+          <button onclick="erase()">del</button>
+          <button onclick="evaluat()">=</button>
+          <button class="operator" onclick="appendOperator('/')">/</button>
+          <button class="clear" onclick="clearScreen()">AC</button>
+          <button class="clear" onclick="square()">X <sup>2</sup></button>
+          <button onclick="sine()">sin</button>
+          <button onclick="cos()">cos</button>
+          <button onclick="tan()">tan</button>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    data = document.getElementById("screen");
+    function appendNumber(number) {
+      data.value += number;
+    }
+    function appendOperator(operator) {
+      data.value += operator;
+    }
+    function erase() {
+      data.value = data.value.slice(0, -1);
+    }
+    function evaluat() {
+      data.value = eval(data.value);
+    }
+    function clearScreen() {
+      data.value = "";
+    }
+    function square() {
+      data.value = eval(data.value) * eval(data.value);
+    }
+    function sine() {
+      data.value = Math.sin((eval(data.value) * Math.PI) / 180).toFixed(5);
+    }
+    function cos() {
+      data.value = Math.cos((eval(data.value) * Math.PI) / 180).toFixed(5);
+    }
+    function tan() {
+      data.value = Math.tan((eval(data.value) * Math.PI) / 180).toFixed(5);
+    }
+  </script>
+</html>
